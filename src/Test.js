@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Test = () => {
-  const saludo = 'hola'// debería marcar 'var' como incorrecto
+  var saludo = 'hola'// debería marcar 'var' como incorrecto
   console.log(saludo)
   return (
     <div>
