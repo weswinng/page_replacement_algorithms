@@ -3,7 +3,7 @@
 // Output: numero de fallos de pagina(int), secuencia de paginas(matriz)
 
 // FIFO
-function FIFO(sequence, numPages) {
+export function FIFO(sequence, numPages) {
     let sequenceArray = sequence.split(' ').map(Number);
     let pageFaults = 0;
     let framesArray = new Array(numPages).fill("-");
@@ -42,7 +42,7 @@ function FIFO(sequence, numPages) {
 }
 
 // LRU
-function LRU(sequence, numPages) {
+export function LRU(sequence, numPages) {
     let sequenceArray = sequence.split(' ').map(Number);
     let pageFaults = 0;
     let framesArray = new Array(numPages).fill("-");
@@ -89,7 +89,7 @@ function LRU(sequence, numPages) {
 }
 
 // OPT
-function OPT(sequence, numPages) {
+export function OPT(sequence, numPages) {
     let sequenceArray = sequence.split(' ').map(Number);
     let pageFaults = 0;
     let framesArray = new Array(numPages).fill("-");
@@ -118,7 +118,6 @@ function OPT(sequence, numPages) {
                     }
                 }
                 if (futurePages.length === 0 || futurePages.length != framesArray.length - 1){
-                    console.log("2")
                     let indexTime = framesArrayTime.indexOf(Math.max(...framesArrayTime));
                     framesArray[indexTime] = page;
                     framesArrayTime[indexTime] = 0;
@@ -140,7 +139,7 @@ function OPT(sequence, numPages) {
                 framesArrayTime[j]++;
             }
         }
-        //console.log("Frames: ", framesArray, "Future: ", futurePages, "Time: ", framesArrayTime)
+        console.log("Frames: ", framesArray, "Future: ", futurePages, "Time: ", framesArrayTime)
         resultMatrix.push([...framesArray]);
     }
     return {
@@ -150,7 +149,7 @@ function OPT(sequence, numPages) {
 }
 
 //FIFO+
-function FIFOplus(sequence, numPages) {
+export function FIFOplus(sequence, numPages) {
     let sequenceArray = sequence.split(' ').map(Number);
     let pageFaults = 0;
     let framesArray = new Array(numPages).fill("-");
@@ -215,11 +214,11 @@ function FIFOplus(sequence, numPages) {
     };
 }
 
-console.log("FIFO: ", FIFO("1 2 3 4 1 2 5 1 2 3 4 5", 3));
-console.log("FIFO: ", FIFO("1 2 3 4 1 2 5 1 2 3 4 5", 4));
-console.log("LRU: ", LRU("1 2 3 4 1 2 5 1 2 3 4 5", 3));
-console.log("LRU: ", LRU("1 2 3 4 1 2 5 1 2 3 4 5", 4));
-console.log("OPT: ", OPT("1 2 3 4 1 2 5 1 2 3 4 5", 3));
-console.log("OPT: ", OPT("1 2 3 4 1 2 5 1 2 3 4 5", 4));
-console.log("FIFO+: ", FIFOplus("1 2 3 4 1 2 5 1 2 3 4 5", 3));
-console.log("FIFO+: ", FIFOplus("1 2 3 4 1 2 5 1 2 3 4 5", 4 ));
+//console.log("FIFO: ", FIFO("1 2 3 4 1 2 5 1 2 3 4 5", 3));
+//console.log("FIFO: ", FIFO("1 2 3 4 1 2 5 1 2 3 4 5", 4));
+//console.log("LRU: ", LRU("1 2 3 4 1 2 5 1 2 3 4 5", 3));
+//console.log("LRU: ", LRU("1 2 3 4 1 2 5 1 2 3 4 5", 4));
+//console.log("OPT: ", OPT("7 0 1 0 0 2 0 3 0 4 2 3", 3));
+//console.log("OPT: ", OPT("1 2 3 4 1 2 5 1 2 3 4 5", 4));
+//console.log("FIFO+: ", FIFOplus("7 0 1 0 0 2 0 3 0 4 2 3", 3));
+//console.log("FIFO+: ", FIFOplus("1 2 3 4 1 2 5 1 2 3 4 5", 4 ));
