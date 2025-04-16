@@ -26,6 +26,8 @@ const SimulationTable = ({ selectedAlgorithm }) => {
     matriz.map((row) => row[colIndex])
   )
 
+  console.log(transposedMatrix)
+
   return (
     <div className='overflow-x-auto'>
       <table className='table-auto border-collapse border border-gray-300 w-full text-center'>
@@ -40,13 +42,15 @@ const SimulationTable = ({ selectedAlgorithm }) => {
         </thead>
         <tbody>
           {transposedMatrix.map((row, rowIndex) => (
-            <tr key={rowIndex}>
+            <tr key={`row-${rowIndex}`}>
               {row.map((cell, cellIndex) => (
                 <td
-                  key={cellIndex}
-                  className='border border-gray-300 px-4 py-2'
+                  key={`cell-${rowIndex}-${cellIndex}`}
+                  className={`border border-gray-300 px-4 py-2 ${
+                    cell[1] === 1 ? 'bg-green-500 text-white' : ''
+                  }`}
                 >
-                  {cell}
+                  {cell[0]}
                 </td>
               ))}
             </tr>

@@ -4,15 +4,14 @@
 
 // FIFO
 
-function MatrixCombine (matrix1, matrix2, length1, length2) { 
+function MatrixCombine (matrix1, matrix2, length1, length2) {
   const resultmatrix = []
   for (let i = 0; i < length1; i++) {
     // Inicializar cada fila como un array vacío
-    resultmatrix[i] = [];
-    
+    resultmatrix[i] = []
     for (let j = 0; j < length2; j++) {
       // Combinar los valores de ambas matrices en la posición [i][j]
-      resultmatrix[i][j] = [matrix1[i][j], matrix2[i][j]];
+      resultmatrix[i][j] = [matrix1[i][j], matrix2[i][j]]
     }
   }
   return resultmatrix
@@ -55,7 +54,7 @@ export function FIFO (sequence, numPages) {
     }
     // console.log('Frames: ', framesArray, 'Time: ', framesArrayTime)
     resultFramesMatrix.push([...framesArray])
-    resultMatrixChanges.push([...framesChanges]) 
+    resultMatrixChanges.push([...framesChanges])
   }
 
   const resultMatrix = MatrixCombine(resultFramesMatrix, resultMatrixChanges, sequenceArray.length, numPages)
