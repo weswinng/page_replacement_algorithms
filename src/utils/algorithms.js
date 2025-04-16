@@ -3,21 +3,40 @@
 // Output: numero de fallos de pagina(int), secuencia de paginas(matriz)
 
 // FIFO
+
+function MatrixCombine (matrix1, matrix2, length1, length2) { 
+  const resultmatrix = []
+  for (let i = 0; i < length1; i++) {
+    // Inicializar cada fila como un array vacío
+    resultmatrix[i] = [];
+    
+    for (let j = 0; j < length2; j++) {
+      // Combinar los valores de ambas matrices en la posición [i][j]
+      resultmatrix[i][j] = [matrix1[i][j], matrix2[i][j]];
+    }
+  }
+  return resultmatrix
+}
+
 export function FIFO (sequence, numPages) {
   const sequenceArray = sequence.split(' ').map(Number)
   let pageFaults = 0
   const framesArray = new Array(numPages).fill('-')
+  const framesChanges = new Array(numPages).fill(0)
   const framesArrayTime = new Array(numPages).fill(0)
-  const resultMatrix = []
+  const resultFramesMatrix = []
+  const resultMatrixChanges = []
 
   for (let i = 0; i < sequenceArray.length; i++) {
     const page = sequenceArray[i]
+    framesChanges.fill('0')
     if (!framesArray.includes(page)) {
       pageFaults++
       if (framesArray.includes('-')) {
         for (let j = 0; j < framesArray.length; j++) {
           if (framesArray[j] === '-') {
             framesArray[j] = page
+            framesChanges[j] = 1
             framesArrayTime[j] = 0
             break
           }
@@ -25,6 +44,7 @@ export function FIFO (sequence, numPages) {
       } else {
         const indexTime = framesArrayTime.indexOf(Math.max(...framesArrayTime))
         framesArray[indexTime] = page
+        framesChanges[indexTime] = 1
         framesArrayTime[indexTime] = 0
       }
     }
@@ -33,8 +53,13 @@ export function FIFO (sequence, numPages) {
         framesArrayTime[j]++
       }
     }
-    resultMatrix.push([...framesArray])
+    // console.log('Frames: ', framesArray, 'Time: ', framesArrayTime)
+    resultFramesMatrix.push([...framesArray])
+    resultMatrixChanges.push([...framesChanges]) 
   }
+
+  const resultMatrix = MatrixCombine(resultFramesMatrix, resultMatrixChanges, sequenceArray.length, numPages)
+
   return {
     pageFaults,
     resultMatrix
@@ -46,11 +71,14 @@ export function LRU (sequence, numPages) {
   const sequenceArray = sequence.split(' ').map(Number)
   let pageFaults = 0
   const framesArray = new Array(numPages).fill('-')
-  const resultMatrix = []
   let framesArrayTime = []
+  const framesChanges = new Array(numPages).fill(0)
+  const resultFramesMatrix = []
+  const resultMatrixChanges = []
 
   for (let i = 0; i < sequenceArray.length; i++) {
     const page = sequenceArray[i]
+    framesChanges.fill('0')
     framesArrayTime = []
     if (!framesArray.includes(page)) {
       pageFaults++
@@ -58,6 +86,7 @@ export function LRU (sequence, numPages) {
         for (let j = 0; j < framesArray.length; j++) {
           if (framesArray[j] === '-') {
             framesArray[j] = page
+            framesChanges[j] = 1
             break
           }
         }
@@ -74,14 +103,19 @@ export function LRU (sequence, numPages) {
           if (!framesArrayTime.includes(framesArray[j])) {
             indexTime = framesArray.indexOf(framesArray[j])
             framesArray[indexTime] = page
+            framesChanges[indexTime] = 1
             break
           }
         }
       }
     }
     // console.log("Frames: ", framesArray, "Time: ", framesArrayTime)
-    resultMatrix.push([...framesArray])
+    resultFramesMatrix.push([...framesArray])
+    resultMatrixChanges.push([...framesChanges])
   }
+
+  const resultMatrix = MatrixCombine(resultFramesMatrix, resultMatrixChanges, sequenceArray.length, numPages)
+
   return {
     pageFaults,
     resultMatrix
@@ -93,19 +127,23 @@ export function OPT (sequence, numPages) {
   const sequenceArray = sequence.split(' ').map(Number)
   let pageFaults = 0
   const framesArray = new Array(numPages).fill('-')
-  const resultMatrix = []
   let futurePages = []
   const framesArrayTime = new Array(numPages).fill(0)
+  const framesChanges = new Array(numPages).fill(0)
+  const resultFramesMatrix = []
+  const resultMatrixChanges = []
 
   for (let i = 0; i < sequenceArray.length; i++) {
     const page = sequenceArray[i]
     futurePages = []
+    framesChanges.fill('0')
     if (!framesArray.includes(page)) {
       pageFaults++
       if (framesArray.includes('-')) {
         for (let j = 0; j < framesArray.length; j++) {
           if (framesArray[j] === '-') {
             framesArray[j] = page
+            framesChanges[j] = 1
             break
           }
         }
@@ -128,6 +166,7 @@ export function OPT (sequence, numPages) {
               indexTime = framesArray.indexOf(framesArray[j])
               framesArray[indexTime] = page
               framesArrayTime[indexTime] = 0
+              framesChanges[indexTime] = 1
               break
             }
           }
@@ -140,8 +179,12 @@ export function OPT (sequence, numPages) {
       }
     }
     // console.log('Frames: ', framesArray, 'Future: ', futurePages, 'Time: ', framesArrayTime)
-    resultMatrix.push([...framesArray])
+    resultFramesMatrix.push([...framesArray])
+    resultMatrixChanges.push([...framesChanges])
   }
+
+  const resultMatrix = MatrixCombine(resultFramesMatrix, resultMatrixChanges, sequenceArray.length, numPages)
+
   return {
     pageFaults,
     resultMatrix
@@ -155,10 +198,13 @@ export function FIFOplus (sequence, numPages) {
   const framesArray = new Array(numPages).fill('-')
   const framesArrayTime = new Array(numPages).fill(0)
   const secondChance = new Array(numPages).fill(false)
-  const resultMatrix = []
+  const framesChanges = new Array(numPages).fill(0)
+  const resultFramesMatrix = []
+  const resultMatrixChanges = []
 
   for (let i = 0; i < sequenceArray.length; i++) {
     const page = sequenceArray[i]
+    framesChanges.fill('0')
     if (!framesArray.includes(page)) {
       pageFaults++
       if (framesArray.includes('-')) {
@@ -166,6 +212,7 @@ export function FIFOplus (sequence, numPages) {
           if (framesArray[j] === '-') {
             framesArray[j] = page
             framesArrayTime[j] = 0
+            framesChanges[j] = 1
             break
           }
         }
@@ -177,6 +224,7 @@ export function FIFOplus (sequence, numPages) {
             framesArray[indexTime] = page
             framesArrayTime[indexTime] = 0
             secondChance[indexTime] = false
+            framesChanges[indexTime] = 1
             exit = true
             break
           } else {
@@ -186,6 +234,7 @@ export function FIFOplus (sequence, numPages) {
             framesArray[indexTime] = page
             framesArrayTime[indexTime] = 0
             secondChance[indexTime] = false
+            framesChanges[indexTime] = 1
             exit = true
           }
         }
@@ -193,6 +242,7 @@ export function FIFOplus (sequence, numPages) {
           const indexTime = framesArrayTime.indexOf(Math.max(...framesArrayTime))
           framesArray[indexTime] = page
           framesArrayTime[indexTime] = 0
+          framesChanges[indexTime] = 1
         }
       }
     } else {
@@ -206,8 +256,12 @@ export function FIFOplus (sequence, numPages) {
       }
     }
     // console.log("Frames: ", framesArray, "Time: ", framesArrayTime, "Second: ", secondChance)
-    resultMatrix.push([...framesArray])
+    resultFramesMatrix.push([...framesArray])
+    resultMatrixChanges.push([...framesChanges])
   }
+
+  const resultMatrix = MatrixCombine(resultFramesMatrix, resultMatrixChanges, sequenceArray.length, numPages)
+
   return {
     pageFaults,
     resultMatrix
@@ -217,7 +271,7 @@ export function FIFOplus (sequence, numPages) {
 // console.log("FIFO: ", FIFO("1 2 3 4 1 2 5 1 2 3 4 5", 3));
 // console.log("FIFO: ", FIFO("1 2 3 4 1 2 5 1 2 3 4 5", 4));
 // console.log("LRU: ", LRU("1 2 3 4 1 2 5 1 2 3 4 5", 3));
-// console.log("LRU: ", LRU("1 2 3 4 1 2 5 1 2 3 4 5", 4));
+// console.log("LRU: ", LRU("7 0 1 2 0 3 0 4 2 3 0 3 2 1 2 0", 3));
 // console.log("OPT: ", OPT("7 0 1 0 0 2 0 3 0 4 2 3", 3));
 // console.log("OPT: ", OPT("1 2 3 4 1 2 5 1 2 3 4 5", 4));
 // console.log("FIFO+: ", FIFOplus("7 0 1 0 0 2 0 3 0 4 2 3", 3));
