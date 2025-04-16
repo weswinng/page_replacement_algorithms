@@ -26,8 +26,6 @@ const SimulationTable = ({ selectedAlgorithm }) => {
     matriz.map((row) => row[colIndex])
   )
 
-  console.log(transposedMatrix)
-
   return (
     <div className='overflow-x-auto'>
       <table className='table-auto border-collapse border border-gray-300 w-full text-center'>

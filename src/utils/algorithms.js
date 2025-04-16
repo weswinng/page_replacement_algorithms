@@ -158,6 +158,7 @@ export function OPT (sequence, numPages) {
           const indexTime = framesArrayTime.indexOf(Math.max(...framesArrayTime))
           framesArray[indexTime] = page
           framesArrayTime[indexTime] = 0
+          framesChanges[indexTime] = 1
         } else {
           let indexTime
           for (let j = 0; j < framesArray.length; j++) {
@@ -267,11 +268,11 @@ export function FIFOplus (sequence, numPages) {
   }
 }
 
-// console.log("FIFO: ", FIFO("1 2 3 4 1 2 5 1 2 3 4 5", 3));
+// console.log('FIFO: ', FIFO('1 2 3 4 1 2 5 1 2 3 4 5', 3))
 // console.log("FIFO: ", FIFO("1 2 3 4 1 2 5 1 2 3 4 5", 4));
 // console.log("LRU: ", LRU("1 2 3 4 1 2 5 1 2 3 4 5", 3));
 // console.log("LRU: ", LRU("7 0 1 2 0 3 0 4 2 3 0 3 2 1 2 0", 3));
-// console.log("OPT: ", OPT("7 0 1 0 0 2 0 3 0 4 2 3", 3));
+// console.log('OPT: ', OPT('7 0 1 0 0 2 0 3 0 4 2 3', 3))
 // console.log("OPT: ", OPT("1 2 3 4 1 2 5 1 2 3 4 5", 4));
 // console.log("FIFO+: ", FIFOplus("7 0 1 0 0 2 0 3 0 4 2 3", 3));
 // console.log("FIFO+: ", FIFOplus("1 2 3 4 1 2 5 1 2 3 4 5", 4 ));
