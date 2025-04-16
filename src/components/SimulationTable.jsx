@@ -20,8 +20,12 @@ const SimulationTable = ({ selectedAlgorithm }) => {
   }
 
   const matriz = results().resultMatrix
-  console.log('Matriz: ', matriz)
-  // const pageFaults = results().pageFaults
+
+  // Transponer la matriz para que las columnas se conviertan en filas
+  const transposedMatrix = matriz[0].map((_, colIndex) =>
+    matriz.map((row) => row[colIndex])
+  )
+
   return (
     <div className='overflow-x-auto'>
       <table className='table-auto border-collapse border border-gray-300 w-full text-center'>
@@ -35,14 +39,14 @@ const SimulationTable = ({ selectedAlgorithm }) => {
           </tr>
         </thead>
         <tbody>
-          {Array.from({ length: frames }).map((_, rowIndex) => (
+          {transposedMatrix.map((row, rowIndex) => (
             <tr key={rowIndex}>
-              {matriz.map((column, colIndex) => (
+              {row.map((cell, cellIndex) => (
                 <td
-                  key={colIndex}
+                  key={cellIndex}
                   className='border border-gray-300 px-4 py-2'
                 >
-                  {column[rowIndex] || '-'}
+                  {cell}
                 </td>
               ))}
             </tr>
