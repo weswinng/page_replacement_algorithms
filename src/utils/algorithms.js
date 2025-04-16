@@ -197,10 +197,11 @@ export function FIFOplus (sequence, numPages) {
   let pageFaults = 0
   const framesArray = new Array(numPages).fill('-')
   const framesArrayTime = new Array(numPages).fill(0)
-  const secondChance = new Array(numPages).fill(false)
+  const secondChance = new Array(numPages).fill('')
   const framesChanges = new Array(numPages).fill(0)
   const resultFramesMatrix = []
   const resultMatrixChanges = []
+  const resultMatrixSecondChance = []
 
   for (let i = 0; i < sequenceArray.length; i++) {
     const page = sequenceArray[i]
@@ -220,20 +221,20 @@ export function FIFOplus (sequence, numPages) {
         let exit
         let indexTime = framesArrayTime.indexOf(Math.max(...framesArrayTime))
         for (let j = 0; j < framesArray.length; j++) {
-          if (secondChance[indexTime] === false) {
+          if (secondChance[indexTime] === '') {
             framesArray[indexTime] = page
             framesArrayTime[indexTime] = 0
-            secondChance[indexTime] = false
+            secondChance[indexTime] = ''
             framesChanges[indexTime] = 1
             exit = true
             break
           } else {
-            secondChance[indexTime] = false
+            secondChance[indexTime] = ''
             const framesArrayTimeCopy = [...framesArrayTime]
             indexTime = framesArrayTime.indexOf(framesArrayTimeCopy.sort((a, b) => a - b)[1])
             framesArray[indexTime] = page
             framesArrayTime[indexTime] = 0
-            secondChance[indexTime] = false
+            secondChance[indexTime] = ''
             framesChanges[indexTime] = 1
             exit = true
           }
@@ -247,8 +248,8 @@ export function FIFOplus (sequence, numPages) {
       }
     } else {
       const indexTime = framesArray.indexOf(page)
-      secondChance.fill(false)
-      secondChance[indexTime] = true
+      secondChance.fill('')
+      secondChance[indexTime] = '*'
     }
     for (let j = 0; j < framesArrayTime.length; j++) {
       if (framesArray[j] !== '-') {
@@ -258,9 +259,11 @@ export function FIFOplus (sequence, numPages) {
     // console.log("Frames: ", framesArray, "Time: ", framesArrayTime, "Second: ", secondChance)
     resultFramesMatrix.push([...framesArray])
     resultMatrixChanges.push([...framesChanges])
+    resultMatrixSecondChance.push([...secondChance])
   }
 
-  const resultMatrix = MatrixCombine(resultFramesMatrix, resultMatrixChanges, sequenceArray.length, numPages)
+  const preMatrix = MatrixCombine(resultFramesMatrix, resultMatrixSecondChance, sequenceArray.length, numPages)
+  const resultMatrix = MatrixCombine(preMatrix, resultMatrixChanges, sequenceArray.length, numPages)
 
   return {
     pageFaults,
