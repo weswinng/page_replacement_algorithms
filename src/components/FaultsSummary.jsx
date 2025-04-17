@@ -15,34 +15,34 @@ const FaultsSummary = ({ selectedAlgorithm }) => {
 
   return (
     <>
-      <ul>
-        <li className='text-center text-lg font-bold'>Resumen de fallos</li>
+      <ul className='bg-background-light p-4 rounded-2xl'>
+        <li className='text-center text-lg font-bold text-primary pb-4'>Resumen de fallos</li>
         {!isSequenceEmpty && (
           <>
             <li
-              className={`text-center text-lg font-bold px-4 py-2 rounded ${
-                selectedAlgorithm === 'optimo' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'
+              className={`text-center text-lg font-bold px-4 py-2 ${
+                selectedAlgorithm === 'optimo' ? 'bg-aquamarine text-background-light rounded-full' : 'text-primary'
               }`}
             >
               OPT: {faultsOpt}
             </li>
             <li
-              className={`text-center text-lg font-bold px-4 py-2 rounded ${
-                selectedAlgorithm === 'fifo' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'
+              className={`text-center text-lg font-bold px-4 py-2 ${
+                selectedAlgorithm === 'fifo' ? 'bg-aquamarine text-background-light rounded-full' : 'text-primary'
               }`}
             >
               FIFO: {faultsFifo}
             </li>
             <li
-              className={`text-center text-lg font-bold px-4 py-2 rounded ${
-                selectedAlgorithm === 'lru' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'
+              className={`text-center text-lg font-bold px-4 py-2 ${
+                selectedAlgorithm === 'lru' ? 'bg-aquamarine text-background-light rounded-full' : 'text-primary'
               }`}
             >
               LRU: {faultsLru}
             </li>
             <li
-              className={`text-center text-lg font-bold px-4 py-2 rounded ${
-                selectedAlgorithm === 'fifo+' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'
+              className={`text-center text-lg font-bold px-4 py-2 ${
+                selectedAlgorithm === 'fifo+' ? 'bg-aquamarine text-background-light rounded-full' : 'text-primary'
               }`}
             >
               FIFO+: {faultsFifoPlus}

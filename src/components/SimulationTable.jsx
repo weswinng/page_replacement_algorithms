@@ -36,12 +36,12 @@ const SimulationTable = ({ selectedAlgorithm }) => {
   )
 
   return (
-    <div className='overflow-x-auto'>
-      <table className='table-auto border-collapse border border-gray-300 w-full text-center'>
+    <div className='overflow-x-auto bg-background-light p-4 rounded-b-md rounded-r-md'>
+      <table className='table-auto'>
         <thead>
           <tr>
             {sequence.split(' ').map((process, index) => (
-              <th key={index} className='border border-gray-300 px-4 py-2 bg-gray-100'>
+              <th key={index} className='text-primary'>
                 {process}
               </th>
             ))}
@@ -53,8 +53,8 @@ const SimulationTable = ({ selectedAlgorithm }) => {
               {row.map((cell, cellIndex) => (
                 <td
                   key={`cell-${rowIndex}-${cellIndex}`}
-                  className={`border border-gray-300 px-4 py-2 ${
-                    cell[1] === 1 ? 'bg-green-500 text-white' : ''
+                  className={`border border-gray-300 px-4 py-2 min-w-14 text-center ${
+                    cell[1] === 1 ? 'bg-aquamarine text-background' : 'text-primary'
                   }`}
                 >
                   {cell[0]}

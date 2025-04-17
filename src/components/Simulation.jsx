@@ -7,8 +7,8 @@ const Simulation = () => {
   const [selectedAlgorithm, setSelectedAlgorithm] = useState('optimo')
 
   return (
-    <section>
-      <article>
+    <section className='flex flex-row justify-center items-center gap-14'>
+      <article className='bg-background'>
         <NavBarAlgorithms selectedAlgorithm={selectedAlgorithm} setSelectedAlgorithm={setSelectedAlgorithm} />
         <SimulationTable selectedAlgorithm={selectedAlgorithm} />
       </article>
