@@ -15,7 +15,7 @@ const FaultsSummary = ({ selectedAlgorithm }) => {
 
   return (
     <>
-      <ul className='bg-background-light p-4 rounded-2xl'>
+      <ul className='bg-background-light p-4 rounded-2xl m-10'>
         <li className='text-center text-lg font-bold text-primary pb-4'>Resumen de fallos</li>
         {!isSequenceEmpty && (
           <>

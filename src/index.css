@@ -1,8 +1,8 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
 @theme {
-    --font-primary: "Bungee Spice", sans-serif;
+    --font-primary:"Roboto Mono", monospace;
 
     --color-eggplant: #553A4B;
     --color-ultra-violet: #3A3370;
@@ -10,4 +10,5 @@
     --color-background: #141115;
     --color-background-light: #2B242D;
     --color-primary: #F4C095;
+    --color-primary-shadow: #b48f71;
 }

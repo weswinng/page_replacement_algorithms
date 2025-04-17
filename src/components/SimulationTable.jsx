@@ -55,7 +55,7 @@ const SimulationTable = ({ selectedAlgorithm }) => {
                 return (
                   <td
                     key={`cell-${rowIndex}-${cellIndex}`}
-                    className={`border border-gray-300 p-2 w-16 h-16 text-center justify-items-center ${
+                    className={`border border-gray-300 p-2 w-16 h-16 text-center font-black text-lg justify-items-center ${
                       cell[1] === 1 ? 'bg-aquamarine text-background' : 'text-primary'
                     }`}
                   >
