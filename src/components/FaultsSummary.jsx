@@ -21,28 +21,28 @@ const FaultsSummary = ({ selectedAlgorithm }) => {
           <>
             <li
               className={`text-center text-lg font-bold px-4 py-2 ${
-                selectedAlgorithm === 'optimo' ? 'bg-aquamarine text-background-light rounded-full' : 'text-primary'
+                selectedAlgorithm === 'optimo' ? 'bg-aquamarine text-background-light rounded-full shadow-xs shadow-aquamarine' : 'text-primary'
               }`}
             >
               OPT: {faultsOpt}
             </li>
             <li
               className={`text-center text-lg font-bold px-4 py-2 ${
-                selectedAlgorithm === 'fifo' ? 'bg-aquamarine text-background-light rounded-full' : 'text-primary'
+                selectedAlgorithm === 'fifo' ? 'bg-aquamarine text-background-light rounded-full shadow-xs shadow-aquamarine' : 'text-primary'
               }`}
             >
               FIFO: {faultsFifo}
             </li>
             <li
               className={`text-center text-lg font-bold px-4 py-2 ${
-                selectedAlgorithm === 'lru' ? 'bg-aquamarine text-background-light rounded-full' : 'text-primary'
+                selectedAlgorithm === 'lru' ? 'bg-aquamarine text-background-light rounded-full shadow-xs shadow-aquamarine' : 'text-primary'
               }`}
             >
               LRU: {faultsLru}
             </li>
             <li
               className={`text-center text-lg font-bold px-4 py-2 ${
-                selectedAlgorithm === 'fifo+' ? 'bg-aquamarine text-background-light rounded-full' : 'text-primary'
+                selectedAlgorithm === 'fifo+' ? 'bg-aquamarine text-background-light rounded-full shadow-xs shadow-aquamarine' : 'text-primary'
               }`}
             >
               FIFO+: {faultsFifoPlus}

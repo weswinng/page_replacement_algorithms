@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 const NavBarAlgorithms = ({ selectedAlgorithm, setSelectedAlgorithm }) => {
   return (
     <>
-      <nav className='flex space-x-4'>
+      <nav className='flex space-x-4 font-bold'>
         <button
           onClick={() => setSelectedAlgorithm('optimo')}
           className={`px-4 py-2 rounded-lg ${
