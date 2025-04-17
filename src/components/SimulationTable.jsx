@@ -51,17 +51,21 @@ const SimulationTable = ({ selectedAlgorithm }) => {
           {transposedMatrix.map((row, rowIndex) => (
             <tr key={`row-${rowIndex}`}>
               {row.map((cell, cellIndex) => {
+                const hasAsterisk = String(cell[0]).includes('*') // Guarda la condición en una variable para claridad
                 return (
                   <td
                     key={`cell-${rowIndex}-${cellIndex}`}
-                    className={`border border-gray-300 px-4 py-2 min-w-14 text-center ${
+                    className={`border border-gray-300 p-2 w-16 h-16 text-center justify-items-center ${
                       cell[1] === 1 ? 'bg-aquamarine text-background' : 'text-primary'
                     }`}
                   >
-                    {String(cell[0]).includes('*') ? cell[0][0] : cell[0]}
-                    <svg xmlns='http://www.w3.org/2000/svg' width={24} height={24} viewBox='0 0 24 24' fill='currentColor' className='icon icon-tabler icons-tabler-filled icon-tabler-heart'><path stroke='none' d='M0 0h24v24H0z' fill='none' /><path d='M6.979 3.074a6 6 0 0 1 4.988 1.425l.037 .033l.034 -.03a6 6 0 0 1 4.733 -1.44l.246 .036a6 6 0 0 1 3.364 10.008l-.18 .185l-.048 .041l-7.45 7.379a1 1 0 0 1 -1.313 .082l-.094 -.082l-7.493 -7.422a6 6 0 0 1 3.176 -10.215z' /></svg>
+                    <div>{hasAsterisk ? cell[0][0] : cell[0]}</div>
+
+                    {hasAsterisk && (
+                      <svg xmlns='http://www.w3.org/2000/svg' width={20} height={20} viewBox='0 0 24 24' fill='currentColor' className='icon icon-tabler icons-tabler-filled icon-tabler-heart block align-middle'><path stroke='none' d='M0 0h24v24H0z' fill='none' /><path d='M6.979 3.074a6 6 0 0 1 4.988 1.425l.037 .033l.034 -.03a6 6 0 0 1 4.733 -1.44l.246 .036a6 6 0 0 1 3.364 10.008l-.18 .185l-.048 .041l-7.45 7.379a1 1 0 0 1 -1.313 .082l-.094 -.082l-7.493 -7.422a6 6 0 0 1 3.176 -10.215z' /></svg>
+                    )}
                   </td>
-                );
+                )
               })}
             </tr>
           ))}
