@@ -45,3 +45,10 @@ input[type='number'] {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #2d9b7e; /* Color al pasar el mouse */
 }
+
+.tooltipA {
+  max-width: 300px; 
+  white-space: normal; 
+  text-align: center; 
+
+}

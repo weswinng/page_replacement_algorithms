@@ -1,4 +1,4 @@
-import InputForm from './components/inputForm'
+import InputForm from './components/InputForm'
 import Simulation from './components/Simulation'
 
 function App () {
