@@ -22,11 +22,11 @@ const InputForm = () => {
 
   return (
     <div className='text-primary p-4 m-2 rounded-2xl text-shadow text-shadow-primary font-primary min-w-7xl border-1 border-primary shadow-md shadow-primary-shadow'>
-      <h1 className='font-primary text-4xl font-black text-center text-primary'>Algoritmos de reemplazo de pagina</h1>
+      <h1 className='font-primary text-4xl font-black text-center text-primary'>Algoritmos de Reemplazo de Página</h1>
       <div className='flex flex-row mt-4 gap-8 max-w-[1000px] mx-auto text-lg justify-center'>
         <RandomSequence />
         <label className='flex flex-col gap-1 grow-1'>
-          Secuencia de procesos:
+          Secuencia de páginas:
           <input
             className='border-2 border-primary rounded-md p-2 focus:border-aquamarine focus:outline-none focus:shadow-sm focus:shadow-aquamarine cursor-text'
             type='text'
