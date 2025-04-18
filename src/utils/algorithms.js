@@ -18,7 +18,10 @@ function MatrixCombine (matrix1, matrix2, length1, length2) {
 }
 
 export function FIFO (sequence, numPages) {
-  const sequenceArray = sequence.split(' ').map(Number)
+  const sequenceArray = sequence
+    .split(' ')
+    .filter((item) => !isNaN(item) && item.trim() !== '') // Filtra solo números válidos
+    .map(Number) // Convierte los elementos a números
   let pageFaults = 0
   const framesArray = new Array(numPages).fill('-')
   const framesChanges = new Array(numPages).fill(0)
@@ -67,7 +70,10 @@ export function FIFO (sequence, numPages) {
 
 // LRU
 export function LRU (sequence, numPages) {
-  const sequenceArray = sequence.split(' ').map(Number)
+  const sequenceArray = sequence
+    .split(' ')
+    .filter((item) => !isNaN(item) && item.trim() !== '') // Filtra solo números válidos
+    .map(Number) // Convierte los elementos a números
   let pageFaults = 0
   const framesArray = new Array(numPages).fill('-')
   let framesArrayTime = []
@@ -123,7 +129,10 @@ export function LRU (sequence, numPages) {
 
 // OPT
 export function OPT (sequence, numPages) {
-  const sequenceArray = sequence.split(' ').map(Number)
+  const sequenceArray = sequence
+    .split(' ')
+    .filter((item) => !isNaN(item) && item.trim() !== '') // Filtra solo números válidos
+    .map(Number) // Convierte los elementos a números
   let pageFaults = 0
   const framesArray = new Array(numPages).fill('-')
   let futurePages = []
@@ -193,7 +202,10 @@ export function OPT (sequence, numPages) {
 
 // FIFO+
 export function FIFOplus (sequence, numPages) {
-  const sequenceArray = sequence.split(' ').map(Number)
+  const sequenceArray = sequence
+    .split(' ')
+    .filter((item) => !isNaN(item) && item.trim() !== '') // Filtra solo números válidos
+    .map(Number) // Convierte los elementos a números
   let pageFaults = 0
   const framesArray = new Array(numPages).fill('-')
   const framesArrayTime = new Array(numPages).fill(0)

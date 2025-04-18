@@ -40,7 +40,7 @@ const SimulationTable = ({ selectedAlgorithm }) => {
       <table className='table-auto '>
         <thead>
           <tr>
-            {sequence.split(' ').map((process, index) => (
+            {sequence.split(' ').filter((item) => !isNaN(item) && item.trim() !== '').map((process, index) => (
               <th key={index} className='text-primary transition-colors ease-in-out delay-1000 duration-1000'>
                 {process}
               </th>
