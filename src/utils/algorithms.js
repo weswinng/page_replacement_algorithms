@@ -2,8 +2,7 @@
 // Input: secuencia(string) y numero de paginas(int)
 // Output: numero de fallos de pagina(int), secuencia de paginas(matriz)
 
-// FIFO
-
+// Funcion para combinar dos matrices
 function MatrixCombine (matrix1, matrix2, length1, length2) {
   const resultmatrix = []
   for (let i = 0; i < length1; i++) {
@@ -17,6 +16,7 @@ function MatrixCombine (matrix1, matrix2, length1, length2) {
   return resultmatrix
 }
 
+// FIFO
 export function FIFO (sequence, numPages) {
   const sequenceArray = sequence
     .split(' ')
