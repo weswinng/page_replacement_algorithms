@@ -39,7 +39,7 @@ const SimulationTable = ({ selectedAlgorithm }) => {
 
   return (
     <div className='overflow-x-auto bg-background-light p-4 rounded-b-md rounded-r-md max-w-[930px]'>
-      <div className='w-full overflow-x-scroll'>
+      <div className='w-full overflow-x-auto pb-4 custom-scrollbar'>
         <table className='table-fixed w-full'>
           <thead>
             <tr>

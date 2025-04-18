@@ -25,3 +25,23 @@ input[type='number']::-webkit-outer-spin-button {
 input[type='number'] {
   -moz-appearance: textfield; /* Elimina las flechas en Firefox */
 }
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px; /* Ancho del scrollbar vertical */
+  height: 12px; /* Altura del scrollbar horizontal */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #141115; /* Color del fondo del track */
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #42E2B8; /* Color del scrollbar */
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #2d9b7e; /* Color al pasar el mouse */
+}
