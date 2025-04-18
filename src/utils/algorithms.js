@@ -426,8 +426,7 @@ export function Clock (sequence, numPages) {
           framesChanges[indexTime] = 1
         }
       }
-    }
-    else {
+    } else {
       const indexTime = framesArray.indexOf(page)
       clock[indexTime] = '*'
     }
@@ -450,8 +449,6 @@ export function Clock (sequence, numPages) {
     resultMatrix
   }
 }
-
-
 
 // console.log('FIFO: ', FIFO('1 2 3 4 1 2 5 1 2 3 4 5', 3))
 // console.log("FIFO: ", FIFO("1 2 3 4 1 2 5 1 2 3 4 5", 4));
