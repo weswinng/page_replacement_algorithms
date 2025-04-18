@@ -163,7 +163,7 @@ export function OPT (sequence, numPages) {
             }
           }
         }
-        if (futurePages.length === 0 || futurePages.length !== framesArray.length - 1) {
+        if (futurePages.length === 0) {
           const indexTime = framesArrayTime.indexOf(Math.max(...framesArrayTime))
           framesArray[indexTime] = page
           framesArrayTime[indexTime] = 0
@@ -171,6 +171,8 @@ export function OPT (sequence, numPages) {
         } else {
           let indexTime
           for (let j = 0; j < framesArray.length; j++) {
+            const framesArrayTimeCopy = [...framesArrayTime]
+            indexTime = framesArrayTime.indexOf(framesArrayTimeCopy.sort((a, b) => b - a)[j])
             if (!futurePages.includes(framesArray[j])) {
               indexTime = framesArray.indexOf(framesArray[j])
               framesArray[indexTime] = page
@@ -363,7 +365,7 @@ export function SecondChance (sequence, numPages) {
 // console.log("FIFO: ", FIFO("1 2 3 4 1 2 5 1 2 3 4 5", 4));
 // console.log("LRU: ", LRU("1 2 3 4 1 2 5 1 2 3 4 5", 3));
 // console.log("LRU: ", LRU("7 0 1 2 0 3 0 4 2 3 0 3 2 1 2 0", 3));
-// console.log('OPT: ', OPT('7 0 1 0 0 2 0 3 0 4 2 3', 3))
+// console.log('OPT: ', OPT('1 2 3 4 5 6 2 3 1 2 3', 5))
 // console.log("OPT: ", OPT("1 2 3 4 1 2 5 1 2 3 4 5", 4));
 // console.log("FIFO+: ", FIFOplus("7 0 1 2 0 3 0 4 2 3 0 3 2 2 3 1", 2));
 // console.log("FIFO+: ", FIFOplus("1 2 3 4 1 2 5 1 2 3 4 5", 4 ));
