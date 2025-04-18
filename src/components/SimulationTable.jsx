@@ -47,9 +47,9 @@ const SimulationTable = ({ selectedAlgorithm }) => {
             ))}
           </tr>
         </thead>
-        <tbody >
+        <tbody>
           {transposedMatrix.map((row, rowIndex) => (
-            <tr key={`row-${rowIndex}`} >
+            <tr key={`row-${rowIndex}`}>
               {row.map((cell, cellIndex) => {
                 const hasAsterisk = String(cell[0]).includes('*') // Guarda la condición en una variable para claridad
                 return (

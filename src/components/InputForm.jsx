@@ -30,7 +30,7 @@ const InputForm = () => {
             <button
               type='button'
               onClick={decrementFrames}
-              className='px-2 py-1 bg-primary text-background font-bold hover:bg-aquamarine'
+              className='px-2 py-1 bg-primary text-background font-bold'
             >
               -
             </button>
@@ -44,7 +44,7 @@ const InputForm = () => {
             <button
               type='button'
               onClick={incrementFrames}
-              className='px-2 py-1 bg-primary text-background font-bold hover:bg-aquamarine'
+              className='px-2 py-1 bg-primary text-background font-bold'
             >
               +
             </button>
