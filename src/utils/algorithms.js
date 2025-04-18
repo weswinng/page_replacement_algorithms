@@ -365,6 +365,94 @@ export function SecondChance (sequence, numPages) {
   }
 }
 
+// Clock
+export function Clock (sequence, numPages) {
+  const sequenceArray = sequence.split(' ').map(Number)
+  let pageFaults = 0
+  const framesArray = new Array(numPages).fill('-')
+  const framesArrayTime = new Array(numPages).fill(0)
+  const clock = new Array(numPages).fill('')
+  const framesChanges = new Array(numPages).fill(0)
+  const resultFramesMatrix = []
+  const resultMatrixChanges = []
+  const resultMatrixClock = []
+
+  for (let i = 0; i < sequenceArray.length; i++) {
+    const page = sequenceArray[i]
+    framesChanges.fill('0')
+    if (!framesArray.includes(page)) {
+      pageFaults++
+      if (framesArray.includes('-')) {
+        for (let j = 0; j < framesArray.length; j++) {
+          if (framesArray[j] === '-') {
+            framesArray[j] = page
+            framesArrayTime[j] = 0
+            framesChanges[j] = 1
+            clock[j] = '*'
+            break
+          }
+        }
+      } else {
+        let exit
+        let indexTime = framesArrayTime.indexOf(Math.max(...framesArrayTime))
+        if (clock[indexTime] === '') {
+          framesArray[indexTime] = page
+          framesArrayTime[indexTime] = 0
+          clock[indexTime] = '*'
+          framesChanges[indexTime] = 1
+          exit = true
+        } else {
+          clock[indexTime] = ''
+          for (let j = 1; j < framesArray.length; j++) {
+            const framesArrayTimeCopy = [...framesArrayTime]
+            indexTime = framesArrayTime.indexOf(framesArrayTimeCopy.sort((a, b) => b - a)[j])
+            if (clock[indexTime] === '') {
+              framesArray[indexTime] = page
+              framesArrayTime[indexTime] = 0
+              clock[indexTime] = '*'
+              framesChanges[indexTime] = 1
+              exit = true
+              break
+            } else {
+              clock[indexTime] = ''
+            }
+          }
+        }
+        if (exit === undefined) {
+          const indexTime = framesArrayTime.indexOf(Math.max(...framesArrayTime))
+          framesArray[indexTime] = page
+          clock[indexTime] = '*'
+          framesArrayTime[indexTime] = 0
+          framesChanges[indexTime] = 1
+        }
+      }
+    }
+    else {
+      const indexTime = framesArray.indexOf(page)
+      clock[indexTime] = '*'
+    }
+    for (let j = 0; j < framesArrayTime.length; j++) {
+      if (framesArray[j] !== '-') {
+        framesArrayTime[j]++
+      }
+    }
+    // console.log("Frames: ", framesArray, "Second: ", secondChance, "Time: ", framesArrayTime)
+    resultFramesMatrix.push([...framesArray])
+    resultMatrixChanges.push([...framesChanges])
+    resultMatrixClock.push([...clock])
+  }
+
+  const preMatrix = MatrixCombine(resultFramesMatrix, resultMatrixClock, sequenceArray.length, numPages)
+  const resultMatrix = MatrixCombine(preMatrix, resultMatrixChanges, sequenceArray.length, numPages)
+
+  return {
+    pageFaults,
+    resultMatrix
+  }
+}
+
+
+
 // console.log('FIFO: ', FIFO('1 2 3 4 1 2 5 1 2 3 4 5', 3))
 // console.log("FIFO: ", FIFO("1 2 3 4 1 2 5 1 2 3 4 5", 4));
 // console.log("LRU: ", LRU("1 2 3 4 1 2 5 1 2 3 4 5", 3));

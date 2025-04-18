@@ -54,6 +54,16 @@ const NavBarAlgorithms = ({ selectedAlgorithm, setSelectedAlgorithm }) => {
         >
           Second Chance
         </button>
+        <button
+          onClick={() => setSelectedAlgorithm('clock')}
+          className={`px-4 py-2 rounded-lg ${
+            selectedAlgorithm === 'clock'
+              ? 'bg-background-light text-primary rounded-b-none'
+              : 'text-primary'
+          }`}
+        >
+          Clock
+        </button>
       </nav>
     </>
   )

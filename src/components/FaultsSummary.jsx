@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { FIFO, LRU, OPT, FIFOplus, SecondChance } from '../utils/algorithms'
+import { FIFO, LRU, OPT, FIFOplus, SecondChance, Clock } from '../utils/algorithms'
 import { usePageReplacement } from '../context/PageReplacementContext'
 
 const FaultsSummary = ({ selectedAlgorithm, setSelectedAlgorithm }) => {
@@ -59,6 +59,14 @@ const FaultsSummary = ({ selectedAlgorithm, setSelectedAlgorithm }) => {
               }`}
             >
               Second Chance: {faultsSecondChance}
+            </li>
+            <li
+              onClick={() => setSelectedAlgorithm('clock')}
+              className={`text-center text-lg font-bold px-4 py-2 ${
+                selectedAlgorithm === 'clock' ? 'bg-aquamarine text-background-light rounded-full shadow-xs shadow-aquamarine' : 'text-primary'
+              }`}
+            >
+              Clock: {faultsSecondChance}
             </li>
           </>
         )}
