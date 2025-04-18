@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { FIFO, LRU, OPT, FIFOplus } from '../utils/algorithms'
+import { FIFO, LRU, OPT, FIFOplus, SecondChance } from '../utils/algorithms'
 import { usePageReplacement } from '../context/PageReplacementContext'
 
 const SimulationTable = ({ selectedAlgorithm }) => {
@@ -23,6 +23,8 @@ const SimulationTable = ({ selectedAlgorithm }) => {
         return LRU(sequence, frames)
       case 'fifo+' :
         return FIFOplus(sequence, frames)
+      case 'second-chance':
+        return SecondChance(sequence, frames) // Cambia esto por la función de Second Chance cuando esté disponible
       default:
         return OPT(sequence, frames)
     }
