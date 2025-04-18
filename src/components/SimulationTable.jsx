@@ -36,26 +36,26 @@ const SimulationTable = ({ selectedAlgorithm }) => {
   )
 
   return (
-    <div className='overflow-x-auto bg-background-light p-4 rounded-b-md rounded-r-md'>
-      <table className='table-auto'>
+    <div className='overflow-x-auto bg-background-light p-4 rounded-b-md rounded-r-md '>
+      <table className='table-auto '>
         <thead>
           <tr>
             {sequence.split(' ').map((process, index) => (
-              <th key={index} className='text-primary'>
+              <th key={index} className='text-primary transition-colors ease-in-out delay-1000 duration-1000'>
                 {process}
               </th>
             ))}
           </tr>
         </thead>
-        <tbody>
+        <tbody >
           {transposedMatrix.map((row, rowIndex) => (
-            <tr key={`row-${rowIndex}`}>
+            <tr key={`row-${rowIndex}`} >
               {row.map((cell, cellIndex) => {
                 const hasAsterisk = String(cell[0]).includes('*') // Guarda la condición en una variable para claridad
                 return (
                   <td
                     key={`cell-${rowIndex}-${cellIndex}`}
-                    className={`border border-gray-300 p-2 w-16 h-16 text-center font-black text-lg justify-items-center ${
+                    className={`border border-gray-300 p-2 w-16 h-16 text-center font-black text-lg justify-items-center transition-all ease-in-out duration-500 delay-75 ${
                       cell[1] === 1 ? 'bg-aquamarine text-background' : 'text-primary'
                     }`}
                   >
