@@ -1,4 +1,3 @@
-1. setSelected resultSummary
 2. Tamaño minimo tabla
 3. Scroll horizontal tabla
 4. Boton Generar Aleotorio
@@ -7,3 +6,4 @@
 7. Boton limpiar secuencia
 8. Tooltip funcionamiento Algoritmos
 9. Fila extra con hits y faults
+10. Limite superior frames

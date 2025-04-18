@@ -248,7 +248,7 @@ export function FIFOplus (sequence, numPages) {
           secondChance[indexTime] = ''
           framesChanges[indexTime] = 1
           exit = true
-          }
+        }
         if (exit === undefined) {
           const indexTime = framesArrayTime.indexOf(Math.max(...framesArrayTime))
           framesArray[indexTime] = page
@@ -318,6 +318,7 @@ export function SecondChance (sequence, numPages) {
           exit = true
         } else {
           for (let j = 1; j < framesArray.length; j++) {
+            const framesArrayTimeCopy = [...framesArrayTime]
             indexTime = framesArrayTime.indexOf(framesArrayTimeCopy.sort((a, b) => b - a)[j])
             if (secondChance[indexTime] === '') {
               framesArray[indexTime] = page

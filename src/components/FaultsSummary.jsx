@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { FIFO, LRU, OPT, FIFOplus } from '../utils/algorithms'
 import { usePageReplacement } from '../context/PageReplacementContext'
 
-const FaultsSummary = ({ selectedAlgorithm }) => {
+const FaultsSummary = ({ selectedAlgorithm, setSelectedAlgorithm }) => {
   const { sequence, frames } = usePageReplacement()
 
   // Verificar si sequence está vacío
@@ -20,6 +20,7 @@ const FaultsSummary = ({ selectedAlgorithm }) => {
         {!isSequenceEmpty && (
           <>
             <li
+              onClick={() => setSelectedAlgorithm('optimo')}
               className={`text-center text-lg font-bold px-4 py-2 ${
                 selectedAlgorithm === 'optimo' ? 'bg-aquamarine text-background-light rounded-full shadow-xs shadow-aquamarine' : 'text-primary'
               }`}
@@ -27,6 +28,7 @@ const FaultsSummary = ({ selectedAlgorithm }) => {
               OPT: {faultsOpt}
             </li>
             <li
+              onClick={() => setSelectedAlgorithm('fifo')}
               className={`text-center text-lg font-bold px-4 py-2 ${
                 selectedAlgorithm === 'fifo' ? 'bg-aquamarine text-background-light rounded-full shadow-xs shadow-aquamarine' : 'text-primary'
               }`}
@@ -34,6 +36,7 @@ const FaultsSummary = ({ selectedAlgorithm }) => {
               FIFO: {faultsFifo}
             </li>
             <li
+              onClick={() => setSelectedAlgorithm('lru')}
               className={`text-center text-lg font-bold px-4 py-2 ${
                 selectedAlgorithm === 'lru' ? 'bg-aquamarine text-background-light rounded-full shadow-xs shadow-aquamarine' : 'text-primary'
               }`}
@@ -41,6 +44,7 @@ const FaultsSummary = ({ selectedAlgorithm }) => {
               LRU: {faultsLru}
             </li>
             <li
+              onClick={() => setSelectedAlgorithm('fifo+')}
               className={`text-center text-lg font-bold px-4 py-2 ${
                 selectedAlgorithm === 'fifo+' ? 'bg-aquamarine text-background-light rounded-full shadow-xs shadow-aquamarine' : 'text-primary'
               }`}
@@ -55,7 +59,8 @@ const FaultsSummary = ({ selectedAlgorithm }) => {
 }
 
 FaultsSummary.propTypes = {
-  selectedAlgorithm: PropTypes.string.isRequired
+  selectedAlgorithm: PropTypes.string.isRequired,
+  setSelectedAlgorithm: PropTypes.func.isRequired
 }
 
 export default FaultsSummary

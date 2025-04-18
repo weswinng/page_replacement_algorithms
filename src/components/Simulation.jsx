@@ -16,7 +16,7 @@ const Simulation = () => {
           <SimulationTable selectedAlgorithm={selectedAlgorithm} />
         </article>
         <article>
-          <FaultsSummary selectedAlgorithm={selectedAlgorithm} />
+          <FaultsSummary selectedAlgorithm={selectedAlgorithm} setSelectedAlgorithm={setSelectedAlgorithm} />
         </article>
       </div>
     </section>
