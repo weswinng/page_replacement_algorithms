@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 @import "tailwindcss";
 
+
 @theme {
     --font-primary:"Roboto Mono", monospace;
 
@@ -11,4 +12,16 @@
     --color-background-light: #2B242D;
     --color-primary: #F4C095;
     --color-primary-shadow: #b48f71;
+}
+
+/* Elimina las flechas de los inputs de tipo number */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none; /* Elimina el estilo predeterminado */
+  appearance: none;
+  margin: 0; /* Elimina cualquier margen */
+}
+
+input[type='number'] {
+  -moz-appearance: textfield; /* Elimina las flechas en Firefox */
 }

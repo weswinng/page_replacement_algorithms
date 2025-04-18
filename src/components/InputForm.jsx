@@ -6,6 +6,10 @@ const InputForm = () => {
   const handleSequenceChange = (e) => setSequence(e.target.value)
   const handleFramesChange = (e) => setFrames(Number(e.target.value))
 
+  // Funciones para incrementar y decrementar frames
+  const incrementFrames = () => setFrames((prev) => prev + 1)
+  const decrementFrames = () => setFrames((prev) => (prev > 1 ? prev - 1 : 1)) // Evita valores menores a 1
+
   return (
     <div className='text-primary p-4 m-2 rounded-2xl text-shadow text-shadow-primary font-primary min-w-7xl border-1 border-primary shadow-md shadow-primary-shadow'>
       <h1 className='font-primary text-4xl font-black text-center text-primary'>Algoritmos de reemplazo de pagina</h1>
@@ -22,12 +26,29 @@ const InputForm = () => {
         </label>
         <label className='flex flex-col gap-1 w-52'>
           Frames:
-          <input
-            className='border-2 border-primary rounded-md p-2 focus:border-aquamarine focus:outline-none focus:shadow-sm focus:shadow-aquamarine cursor-text'
-            type='text'
-            value={frames}
-            onChange={handleFramesChange}
-          />
+          <div className='flex items-center border-2 border-primary rounded-md'>
+            <button
+              type='button'
+              onClick={decrementFrames}
+              className='px-2 py-1 bg-primary text-background font-bold hover:bg-aquamarine'
+            >
+              -
+            </button>
+            <input
+              className='w-full text-center focus:outline-none'
+              type='number'
+              value={frames}
+              onChange={handleFramesChange}
+              min='1'
+            />
+            <button
+              type='button'
+              onClick={incrementFrames}
+              className='px-2 py-1 bg-primary text-background font-bold hover:bg-aquamarine'
+            >
+              +
+            </button>
+          </div>
         </label>
       </div>
     </div>

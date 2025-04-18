@@ -4,7 +4,7 @@ const PageReplacementContext = createContext()
 
 // eslint-disable-next-line react/prop-types
 export const PageReplacementProvider = ({ children }) => {
-  const [sequence, setSequence] = useState('7 0 1 2 0 3 0 4 2 3 0 3 2')
+  const [sequence, setSequence] = useState('7 0 1 2 0 3 0 4 2 3 0 3 2 1 2 0')
   const [frames, setFrames] = useState(3)
 
   return (
