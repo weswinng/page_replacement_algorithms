@@ -317,6 +317,7 @@ export function SecondChance (sequence, numPages) {
           framesChanges[indexTime] = 1
           exit = true
         } else {
+          secondChance[indexTime] = ''
           for (let j = 1; j < framesArray.length; j++) {
             const framesArrayTimeCopy = [...framesArrayTime]
             indexTime = framesArrayTime.indexOf(framesArrayTimeCopy.sort((a, b) => b - a)[j])
@@ -327,19 +328,21 @@ export function SecondChance (sequence, numPages) {
               framesChanges[indexTime] = 1
               exit = true
               break
+            } else {
+              secondChance[indexTime] = ''
             }
           }
         }
         if (exit === undefined) {
           const indexTime = framesArrayTime.indexOf(Math.max(...framesArrayTime))
           framesArray[indexTime] = page
+          secondChance[indexTime] = ''
           framesArrayTime[indexTime] = 0
           framesChanges[indexTime] = 1
         }
       }
     } else {
       const indexTime = framesArray.indexOf(page)
-      secondChance.fill('')
       secondChance[indexTime] = '*'
     }
     for (let j = 0; j < framesArrayTime.length; j++) {
