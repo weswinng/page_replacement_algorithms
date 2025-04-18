@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { FIFO, LRU, OPT, FIFOplus } from '../utils/algorithms'
+import { FIFO, LRU, OPT, FIFOplus, SecondChance } from '../utils/algorithms'
 import { usePageReplacement } from '../context/PageReplacementContext'
 
 const FaultsSummary = ({ selectedAlgorithm, setSelectedAlgorithm }) => {
@@ -12,6 +12,7 @@ const FaultsSummary = ({ selectedAlgorithm, setSelectedAlgorithm }) => {
   const faultsLru = !isSequenceEmpty ? LRU(sequence, frames).pageFaults : null
   const faultsOpt = !isSequenceEmpty ? OPT(sequence, frames).pageFaults : null
   const faultsFifoPlus = !isSequenceEmpty ? FIFOplus(sequence, frames).pageFaults : null
+  const faultsSecondChance = !isSequenceEmpty ? SecondChance(sequence, frames).pageFaults : null
 
   return (
     <>
@@ -50,6 +51,14 @@ const FaultsSummary = ({ selectedAlgorithm, setSelectedAlgorithm }) => {
               }`}
             >
               FIFO+: {faultsFifoPlus}
+            </li>
+            <li
+              onClick={() => setSelectedAlgorithm('second-chance')}
+              className={`text-center text-lg font-bold px-4 py-2 ${
+                selectedAlgorithm === 'second-chance' ? 'bg-aquamarine text-background-light rounded-full shadow-xs shadow-aquamarine' : 'text-primary'
+              }`}
+            >
+              Second Chance: {faultsSecondChance}
             </li>
           </>
         )}

@@ -44,6 +44,16 @@ const NavBarAlgorithms = ({ selectedAlgorithm, setSelectedAlgorithm }) => {
         >
           FIFO+
         </button>
+        <button
+          onClick={() => setSelectedAlgorithm('second-chance')}
+          className={`px-4 py-2 rounded-lg ${
+            selectedAlgorithm === 'second-chance'
+              ? 'bg-background-light text-primary rounded-b-none'
+              : 'text-primary'
+          }`}
+        >
+          Second Chance
+        </button>
       </nav>
     </>
   )
