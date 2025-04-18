@@ -231,7 +231,7 @@ export function FIFOplus (sequence, numPages) {
           } else {
             secondChance[indexTime] = ''
             const framesArrayTimeCopy = [...framesArrayTime]
-            indexTime = framesArrayTime.indexOf(framesArrayTimeCopy.sort((a, b) => a - b)[1])
+            indexTime = framesArrayTime.indexOf(framesArrayTimeCopy.sort((a, b) => b - a)[1])
             framesArray[indexTime] = page
             framesArrayTime[indexTime] = 0
             secondChance[indexTime] = ''
@@ -256,7 +256,7 @@ export function FIFOplus (sequence, numPages) {
         framesArrayTime[j]++
       }
     }
-    // console.log("Frames: ", framesArray, "Time: ", framesArrayTime, "Second: ", secondChance)
+    // console.log("Frames: ", framesArray, "Second: ", secondChance, "Time: ", framesArrayTime)
     resultFramesMatrix.push([...framesArray])
     resultMatrixChanges.push([...framesChanges])
     resultMatrixSecondChance.push([...secondChance])
@@ -277,5 +277,5 @@ export function FIFOplus (sequence, numPages) {
 // console.log("LRU: ", LRU("7 0 1 2 0 3 0 4 2 3 0 3 2 1 2 0", 3));
 // console.log('OPT: ', OPT('7 0 1 0 0 2 0 3 0 4 2 3', 3))
 // console.log("OPT: ", OPT("1 2 3 4 1 2 5 1 2 3 4 5", 4));
-// console.log("FIFO+: ", FIFOplus("7 0 1 0 0 2 0 3 0 4 2 3", 3));
+// console.log("FIFO+: ", FIFOplus("7 0 1 2 0 3 0 4 2 3 0 3 2 2 3 1", 2));
 // console.log("FIFO+: ", FIFOplus("1 2 3 4 1 2 5 1 2 3 4 5", 4 ));
