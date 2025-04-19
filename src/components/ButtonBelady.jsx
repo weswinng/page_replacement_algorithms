@@ -8,7 +8,6 @@ const ButtonBelady = () => {
   // Lista de secuencias que presentan la anomalía de Belady
   const beladySequences = [
     '1 2 3 4 1 2 5 1 2 3 4 5', // Ejemplo clásico
-    '2 3 2 1 5 2 4 5 3 2 5 2',
     '3 2 1 0 3 2 4 3 2 1 0 4',
     '0 1 2 3 0 1 4 0 1 2 3 4',
     '0 1 2 3 0 1 4 0 1 2 3 4 5 6 7 8'
