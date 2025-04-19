@@ -1,4 +1,6 @@
 import { usePageReplacement } from '../context/PageReplacementContext'
+import ReactTooltip from 'react-tooltip'
+import '../index.css'
 
 const ButtonBelady = () => {
   const { setSequence } = usePageReplacement()
@@ -6,9 +8,10 @@ const ButtonBelady = () => {
   // Lista de secuencias que presentan la anomalía de Belady
   const beladySequences = [
     '1 2 3 4 1 2 5 1 2 3 4 5', // Ejemplo clásico
-    '7 0 1 2 0 3 0 4 2 3 0 3 2 1 2 0',
+    '2 3 2 1 5 2 4 5 3 2 5 2',
     '3 2 1 0 3 2 4 3 2 1 0 4',
-    '2 3 2 1 5 2 4 5 3 2 5 1 2 4'
+    '0 1 2 3 0 1 4 0 1 2 3 4',
+    '0 1 2 3 0 1 4 0 1 2 3 4 5 6 7 8'
   ]
 
   const setBeladySequence = () => {
@@ -20,7 +23,27 @@ const ButtonBelady = () => {
   // Agregar Tooltip: Descipcion de la anomalía de Belady
 
   return (
-    <button className='self-end' onClick={setBeladySequence}>
+    <button
+      className='self-end'
+      onClick={setBeladySequence}
+      data-tip
+      data-for='belady'
+    >
+      <ReactTooltip
+        id='belady'
+        className='tooltipA'
+        place='top'
+        effect='solid'
+        arrowColor='#F4C095'
+        borderColor='#F4C095'
+        border
+        backgroundColor='#553A4B'
+        textColor='#fff'
+        delayShow={300}
+        delayHide={300}
+      >
+        <span>La Anomalía de Bélády ocurre cuando al aumentar el número de marcos de página en memoria provoca más fallos de página, en lugar de menos.</span>
+      </ReactTooltip>
       <svg
         xmlns='http://www.w3.org/2000/svg'
         width='38' height='38' viewBox='0 0 24 24'
