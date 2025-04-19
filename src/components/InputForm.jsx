@@ -29,13 +29,36 @@ const InputForm = () => {
         <RandomSequence />
         <label className='flex flex-col gap-1 grow-1'>
           Secuencia de páginas:
-          <input
-            className='border-2 border-primary rounded-md p-2 focus:border-aquamarine focus:outline-none focus:shadow-sm focus:shadow-aquamarine cursor-text'
-            type='text'
-            value={sequence}
-            onChange={handleSequenceChange}
-            placeholder='Ej: 7 0 1 2 0 3 0 4 2 3 0 3 2'
-          />
+          <div className='flex flex-row items-center gap-2'>
+            <input
+              className='border-2 border-primary rounded-md p-2 focus:border-aquamarine focus:outline-none focus:shadow-sm focus:shadow-aquamarine cursor-text flex-grow'
+              type='text'
+              value={sequence}
+              onChange={handleSequenceChange}
+              placeholder='Ej: 7 0 1 2 0 3 0 4 2 3 0 3 2'
+            />
+            <button
+              type='button'
+              onClick={() => setSequence('')}
+            >
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                width='34'
+                height='34'
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='currentColor'
+                strokeWidth='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                className='icon icon-tabler icons-tabler-outline icon-tabler-backspace hover:stroke-aquamarine cursor-pointer transition-colors ease-in-out duration-300'
+              >
+                <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+                <path d='M20 6a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-11l-5 -5a1.5 1.5 0 0 1 0 -2l5 -5z' />
+                <path d='M12 10l4 4m0 -4l-4 4' />
+              </svg>
+            </button>
+          </div>
         </label>
         <div className='flex flex-row items-end gap-2'>
           <button
