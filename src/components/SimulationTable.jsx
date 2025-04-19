@@ -4,15 +4,6 @@ import { usePageReplacement } from '../context/PageReplacementContext'
 
 const SimulationTable = ({ selectedAlgorithm }) => {
   const { sequence, frames } = usePageReplacement()
-
-  if (!sequence.trim()) {
-    return (
-      <div className='text-center text-lg font-bold text-gray-500'>
-        No hay resultados disponibles
-      </div>
-    )
-  }
-
   const results = () => {
     switch (selectedAlgorithm) {
       case 'optimo':
