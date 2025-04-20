@@ -55,7 +55,6 @@ export function FIFO (sequence, numPages) {
         framesArrayTime[j]++
       }
     }
-    // console.log('Frames: ', framesArray, 'Time: ', framesArrayTime)
     resultFramesMatrix.push([...framesArray])
     resultMatrixChanges.push([...framesChanges])
   }
@@ -114,7 +113,6 @@ export function LRU (sequence, numPages) {
         }
       }
     }
-    // console.log("Frames: ", framesArray, "Time: ", framesArrayTime)
     resultFramesMatrix.push([...framesArray])
     resultMatrixChanges.push([...framesChanges])
   }
@@ -189,7 +187,6 @@ export function OPT (sequence, numPages) {
         framesArrayTime[j]++
       }
     }
-    // console.log('Frames: ', framesArray, 'Future: ', futurePages, 'Time: ', framesArrayTime)
     resultFramesMatrix.push([...framesArray])
     resultMatrixChanges.push([...framesChanges])
   }
@@ -266,7 +263,6 @@ export function FIFOplus (sequence, numPages) {
         framesArrayTime[j]++
       }
     }
-    // console.log("Frames: ", framesArray, "Second: ", secondChance, "Time: ", framesArrayTime)
     resultFramesMatrix.push([...framesArray])
     resultMatrixChanges.push([...framesChanges])
     resultMatrixSecondChance.push([...secondChance])
@@ -350,7 +346,6 @@ export function SecondChance (sequence, numPages) {
         framesArrayTime[j]++
       }
     }
-    // console.log("Frames: ", framesArray, "Second: ", secondChance, "Time: ", framesArrayTime)
     resultFramesMatrix.push([...framesArray])
     resultMatrixChanges.push([...framesChanges])
     resultMatrixSecondChance.push([...secondChance])
@@ -435,7 +430,6 @@ export function Clock (sequence, numPages) {
         framesArrayTime[j]++
       }
     }
-    // console.log("Frames: ", framesArray, "Second: ", secondChance, "Time: ", framesArrayTime)
     resultFramesMatrix.push([...framesArray])
     resultMatrixChanges.push([...framesChanges])
     resultMatrixClock.push([...clock])
@@ -449,12 +443,3 @@ export function Clock (sequence, numPages) {
     resultMatrix
   }
 }
-
-// console.log('FIFO: ', FIFO('1 2 3 4 1 2 5 1 2 3 4 5', 3))
-// console.log("FIFO: ", FIFO("1 2 3 4 1 2 5 1 2 3 4 5", 4));
-// console.log("LRU: ", LRU("1 2 3 4 1 2 5 1 2 3 4 5", 3));
-// console.log("LRU: ", LRU("7 0 1 2 0 3 0 4 2 3 0 3 2 1 2 0", 3));
-// console.log('OPT: ', OPT('1 2 3 4 5 6 2 3 1 2 3', 5))
-// console.log("OPT: ", OPT("1 2 3 4 1 2 5 1 2 3 4 5", 4));
-// console.log("FIFO+: ", FIFOplus("7 0 1 2 0 3 0 4 2 3 0 3 2 2 3 1", 2));
-// console.log("FIFO+: ", FIFOplus("1 2 3 4 1 2 5 1 2 3 4 5", 4 ));
