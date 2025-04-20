@@ -1,4 +1,0 @@
-1. Scroll Vertical Tabla
-2. Animacion cambio de tamaño
-5. Max frames a usar por secuencia
-
