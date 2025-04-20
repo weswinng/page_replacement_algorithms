@@ -1,12 +1,29 @@
-# React + Vite
+# Simulador de Algoritmos de Reemplazo de Página
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es una aplicación web desarrollada con **React + Vite** que simula el funcionamiento de los principales **algoritmos de reemplazo de página** utilizados en sistemas operativos. Su propósito es ayudar a estudiantes y entusiastas de la informática a entender de manera visual y práctica cómo estos algoritmos gestionan la memoria cuando se producen fallos de página.
 
-Currently, two official plugins are available:
+## 📸 Vista previa
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Vista previa de la app](./src/assets/screenshot.png)
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## 🚀 Características
+
+- Simulación de los algoritmos de reemplazo de página:
+  - FIFO (First In, First Out)
+  - LRU (Least Recently Used)
+  - OPT (Óptimo)
+  - FIFO+ (First In, First Out enhanced)
+  - Second Chance
+  - Clock
+- Interfaz interactiva y amigable
+- Contador de fallos de página por cada algoritmo
+- Desarrollo en tiempo real con Vite
+
+## 🛠️ Tecnologías utilizadas
+
+- [React](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [HTML & CSS]
